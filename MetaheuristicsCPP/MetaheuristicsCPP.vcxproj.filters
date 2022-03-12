@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Optimizers">
+      <UniqueIdentifier>{212c86ef-40cb-41b2-bbba-61663c0ebc69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\StopConditions">
+      <UniqueIdentifier>{24e4788d-6059-49a4-be33-221ba5ed1ec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{25fb0f09-feb8-4281-9d66-9c94bb66b7c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Optimizers">
+      <UniqueIdentifier>{e024798e-32c0-4f89-aa64-182d8420a084}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{5998dff4-c0fc-410e-b319-53aa49fefe3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\StopConditions">
+      <UniqueIdentifier>{51ff11dc-6ddb-4065-96c5-46afcd4f30b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Mutations">
+      <UniqueIdentifier>{40522be9-45b6-479d-8bfb-f9c988f0d749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Mutations">
+      <UniqueIdentifier>{b75a193e-9956-45fa-9098-bee0daf830d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generators">
+      <UniqueIdentifier>{d951b9bf-1c36-47d8-8dfd-398b3331ef3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generators">
+      <UniqueIdentifier>{a10c7a94-d0bd-47f4-96d0-fc52451e4465}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeUtils.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="StopCondition.cpp">
+      <Filter>Source Files\StopConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="StopConditions.cpp">
+      <Filter>Source Files\StopConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="RealMutations.cpp">
+      <Filter>Source Files\Mutations</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryMutations.cpp">
+      <Filter>Source Files\Mutations</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryRandomSearch.cpp">
+      <Filter>Source Files\Optimizers</Filter>
+    </ClCompile>
+    <ClCompile Include="RealEvolutionStrategy11.cpp">
+      <Filter>Source Files\Optimizers</Filter>
+    </ClCompile>
+    <ClCompile Include="RealRandomSearch.cpp">
+      <Filter>Source Files\Optimizers</Filter>
+    </ClCompile>
+    <ClCompile Include="RealMutationES11Adaptations.cpp">
+      <Filter>Source Files\Mutations</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryGenerators.cpp">
+      <Filter>Source Files\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="RealGenerators.cpp">
+      <Filter>Source Files\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="RealCMAES.cpp">
+      <Filter>Source Files\Optimizers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StopCondition.h">
+      <Filter>Header Files\StopConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="OptimizationResult.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeUtils.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Optimizer.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="SamplingOptimizer.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="StopConditions.h">
+      <Filter>Header Files\StopConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="Mutation.h">
+      <Filter>Header Files\Mutations</Filter>
+    </ClInclude>
+    <ClInclude Include="RealMutations.h">
+      <Filter>Header Files\Mutations</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryMutations.h">
+      <Filter>Header Files\Mutations</Filter>
+    </ClInclude>
+    <ClInclude Include="Individual.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="PopulationOptimizer.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorUtils.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryRandomSearch.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="RealEvolutionStrategy11.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="RealMutationES11Adaptation.h">
+      <Filter>Header Files\Mutations</Filter>
+    </ClInclude>
+    <ClInclude Include="RealRandomSearch.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="RealMutationES11Adaptations.h">
+      <Filter>Header Files\Mutations</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryGenerators.h">
+      <Filter>Header Files\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="RealGenerators.h">
+      <Filter>Header Files\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator.h">
+      <Filter>Header Files\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="RealCMAES.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

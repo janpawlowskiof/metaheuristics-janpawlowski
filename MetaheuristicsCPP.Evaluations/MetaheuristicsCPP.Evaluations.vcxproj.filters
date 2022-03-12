@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Constraints">
+      <UniqueIdentifier>{b17dd854-234a-4b57-a9d0-30eae5d1028f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Evaluations">
+      <UniqueIdentifier>{7641bf71-d6be-46c0-b83e-9b292f38296a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Evaluations">
+      <UniqueIdentifier>{35561644-c774-43d1-bc4d-0a5d99469945}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Constraints">
+      <UniqueIdentifier>{41f60fb0-e72c-4894-ad68-acae09e5df65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Evaluations\P3">
+      <UniqueIdentifier>{0d1bc6bf-cc72-465d-bfb7-bae67a578446}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Evaluations\P3">
+      <UniqueIdentifier>{5020244f-0bfa-4a17-a35f-05de27acabae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BinaryEvaluations.cpp">
+      <Filter>Source Files\Evaluations</Filter>
+    </ClCompile>
+    <ClCompile Include="RealConstraints.cpp">
+      <Filter>Source Files\Constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="RealEvaluations.cpp">
+      <Filter>Source Files\Evaluations</Filter>
+    </ClCompile>
+    <ClCompile Include="P3Configuration.cpp">
+      <Filter>Source Files\Evaluations\P3</Filter>
+    </ClCompile>
+    <ClCompile Include="P3Evaluation.cpp">
+      <Filter>Source Files\Evaluations\P3</Filter>
+    </ClCompile>
+    <ClCompile Include="P3Util.cpp">
+      <Filter>Source Files\Evaluations\P3</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BinaryConstraints.h">
+      <Filter>Header Files\Constraints</Filter>
+    </ClInclude>
+    <ClInclude Include="Constraint.h">
+      <Filter>Header Files\Constraints</Filter>
+    </ClInclude>
+    <ClInclude Include="RealConstraints.h">
+      <Filter>Header Files\Constraints</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryEvaluations.h">
+      <Filter>Header Files\Evaluations</Filter>
+    </ClInclude>
+    <ClInclude Include="Evaluation.h">
+      <Filter>Header Files\Evaluations</Filter>
+    </ClInclude>
+    <ClInclude Include="RealEvaluations.h">
+      <Filter>Header Files\Evaluations</Filter>
+    </ClInclude>
+    <ClInclude Include="P3Configuration.h">
+      <Filter>Header Files\Evaluations\P3</Filter>
+    </ClInclude>
+    <ClInclude Include="P3Evaluation.h">
+      <Filter>Header Files\Evaluations\P3</Filter>
+    </ClInclude>
+    <ClInclude Include="P3Util.h">
+      <Filter>Header Files\Evaluations\P3</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
