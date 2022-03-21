@@ -79,12 +79,16 @@
     <Compile Include="Generators\AGenerator.cs" />
     <Compile Include="Generators\BinaryRandomGenerator.cs" />
     <Compile Include="Generators\RealRandomGenerator.cs" />
+    <Compile Include="Lab1.cs" />
+    <Compile Include="Lab2.cs" />
     <Compile Include="MetaheuristicsCS.cs" />
     <Compile Include="Mutations\ARandomMutation.cs" />
     <Compile Include="Mutations\ARealMutationES11Adaptation.cs" />
     <Compile Include="Mutations\BinaryBitFlipMutation.cs" />
     <Compile Include="Mutations\IMutation.cs" />
     <Compile Include="Mutations\NullMutation.cs" />
+    <Compile Include="Mutations\RealSawMutationES11Adaptation.cs" />
+    <Compile Include="Mutations\RealCycleMutationES11Adaptation.cs" />
     <Compile Include="Mutations\RealGaussianMutation.cs" />
     <Compile Include="Mutations\RealNullRealMutationES11Adaptation.cs" />
     <Compile Include="Mutations\RealOneFifthRuleMutationES11Adaptation.cs" />

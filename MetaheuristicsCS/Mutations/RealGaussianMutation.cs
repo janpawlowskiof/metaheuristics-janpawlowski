@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using EvaluationsCLI;
 using Utility;
@@ -12,6 +13,8 @@ namespace Mutations
 
         private readonly List<double> sigmas;
 
+        private double maxSigma = 100.0; 
+        
         public RealGaussianMutation(double sigma, IEvaluationProfile<double> evaluationProfile, int? seed = null, double probability = 1.0)
             : base(probability, evaluationProfile)
         {
@@ -42,11 +45,13 @@ namespace Mutations
             {
                 if (uniformRNG.Next(Probability))
                 {
+                    double newSolution;
                     do
                     {
-                        solution[i] += gaussianRNG.Next(0.0, sigmas[i]);
-                    } while (!evaluationProfile.pcConstraint.bIsFeasible(i, solution[i]));
+                        newSolution = solution[i] + gaussianRNG.Next(0.0, sigmas[i]); 
+                    } while (!evaluationProfile.pcConstraint.bIsFeasible(i, newSolution));
 
+                    solution[i] = newSolution;
                     successfulMutation = true;
                 }
             }
@@ -58,7 +63,7 @@ namespace Mutations
         {
             for (int i = 0; i < sigmas.Count; ++i)
             {
-                sigmas[i] *= multiplier;
+                sigmas[i] = Math.Min(Math.Max(sigmas[i] * multiplier, -maxSigma), maxSigma);
             }
         }
 
@@ -78,6 +83,11 @@ namespace Mutations
             {
                 sigmas[i] = sigma;
             }
+        }
+        
+        public int NumSigmas()
+        {
+            return sigmas.Count;
         }
     }
 }
