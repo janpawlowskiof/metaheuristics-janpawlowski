@@ -81,6 +81,7 @@
     <Compile Include="Generators\RealRandomGenerator.cs" />
     <Compile Include="Lab1.cs" />
     <Compile Include="Lab2.cs" />
+    <Compile Include="Lab3.cs" />
     <Compile Include="MetaheuristicsCS.cs" />
     <Compile Include="Mutations\ARandomMutation.cs" />
     <Compile Include="Mutations\ARealMutationES11Adaptation.cs" />
@@ -98,10 +99,15 @@
     <Compile Include="Optimizers\BinaryGreedyRSSearch.cs" />
     <Compile Include="Optimizers\BinaryRandomSearch.cs" />
     <Compile Include="Optimizers\CMAES\CMAES.cs" />
+    <Compile Include="Optimizers\CMAES\R_CMAES.cs" />
     <Compile Include="Optimizers\CMAES\Impl\AdaptationParameters.cs" />
     <Compile Include="Optimizers\CMAES\Impl\Individual.cs" />
     <Compile Include="Optimizers\CMAES\Impl\SelectionParameters.cs" />
     <Compile Include="Optimizers\CMAES\Impl\StepSizeParameters.cs" />
+    <Compile Include="Optimizers\CMAES\JumpingCMAES.cs" />
+    <Compile Include="Optimizers\CMAES\RestartingCMAES.cs" />
+    <Compile Include="Optimizers\CMAES\R_JumpingCMAES.cs" />
+    <Compile Include="Optimizers\CMAES\VeryGreedyCMAES.cs" />
     <Compile Include="Optimizers\OptimizationResult.cs" />
     <Compile Include="Optimizers\RealEvolutionStrategy11.cs" />
     <Compile Include="Optimizers\RealRandomSearch.cs" />

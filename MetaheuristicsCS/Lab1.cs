@@ -102,7 +102,7 @@ namespace MetaheuristicsCS
         
         private static void Lab1OneMax(List<Experiment> experiments)
         {
-            foreach (var genes in new[] {5, 15, 30})
+            foreach (var genes in new[] {5, 10, 20, 30, 50})
             {
                 RunExperimentsForProblem(experiments, () => new CBinaryOneMaxEvaluation(genes), "OneMax", genes.ToString());
             }
@@ -111,7 +111,7 @@ namespace MetaheuristicsCS
         private static void Lab1StandardDeceptiveConcatenation(List<Experiment> experiments)
         {
             var blockSize = 5;
-            foreach (var blocks in new[] {1, 2, 6, 10})
+            foreach (var blocks in new[] {1, 2, 6, 10, 16})
             {
                 RunExperimentsForProblem(experiments, () => new CBinaryStandardDeceptiveConcatenationEvaluation(blockSize, blocks), "Order5 Standard Deceptive Concatenation", (blockSize * blocks).ToString());
             }

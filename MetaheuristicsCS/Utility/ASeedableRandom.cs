@@ -2,7 +2,7 @@
 
 namespace Utility
 {
-    class ASeedableRandom
+    public class ASeedableRandom
     {
         protected readonly Random rng;
 

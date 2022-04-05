@@ -2,7 +2,7 @@
 
 namespace Utility
 {
-    class NormalRealRandom : ASeedableRandom
+    public class NormalRealRandom : ASeedableRandom
     {
         private double? value;
 

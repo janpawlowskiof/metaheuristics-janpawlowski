@@ -1,34 +1,33 @@
-﻿using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Factorization;
-using System;
+﻿using System;
 using System.Collections.Generic;
-
 using EvaluationsCLI;
 using Generators;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Factorization;
 using Optimizers.CMAESImpl;
 using StopConditions;
 using Utility;
 
 namespace Optimizers
 {
-    class CMAES : AOptimizer<double>
+    public class CMAES : AOptimizer<double>
     {
         private readonly double initSigma;
 
-        private readonly NormalRealRandom normalRNG;
+        protected readonly NormalRealRandom normalRNG;
         private readonly RealRandomGenerator realGenerator;
 
-        private Vector<double> previousMeans;
-        private readonly Vector<double> means;
-        private readonly Matrix<double> covarianceMatrix;
+        protected Vector<double> previousMeans;
+        protected Vector<double> means;
+        protected readonly Matrix<double> covarianceMatrix;
 
         private readonly AdaptationParameters adaptationParameters;
         private readonly SelectionParameters selectionParameters;
-        private readonly StepSizeParameters stepSizeParameters;
+        protected readonly StepSizeParameters stepSizeParameters;
 
-        private readonly List<Individual> sampledPopulation;
+        protected readonly List<Individual> sampledPopulation;
 
-        public CMAES(IEvaluation<double> evaluation, AStopCondition stopCondition, double initSigma, int? seed=null)
+        public CMAES(IEvaluation<double> evaluation, AStopCondition stopCondition, double initSigma, int? seed = null)
             : base(evaluation, stopCondition)
         {
             this.initSigma = initSigma;
@@ -62,31 +61,43 @@ namespace Optimizers
 
         protected override bool RunIteration(long itertionNumber, DateTime startTime)
         {
-            sampledPopulation.Clear();
+            try
+            {
+                sampledPopulation.Clear();
 
-            Evd<double> covarianceMatrixDecomposition = covarianceMatrix.Evd();
+                Evd<double> covarianceMatrixDecomposition = covarianceMatrix.Evd();
 
-            Matrix<double> eigenvectors = covarianceMatrixDecomposition.EigenVectors;
-            Matrix<double> sqrtEigenvalues = covarianceMatrixDecomposition.D.PointwiseSqrt();
-            Matrix<double> invertedSqrtEigenvalues = Matrix<double>.Build.DenseOfMatrix(sqrtEigenvalues);
-            invertedSqrtEigenvalues.SetDiagonal(invertedSqrtEigenvalues.Diagonal().DivideByThis(1.0));
+                Matrix<double> eigenvectors = covarianceMatrixDecomposition.EigenVectors;
+                Matrix<double> sqrtEigenvalues = covarianceMatrixDecomposition.D.PointwiseSqrt();
+                Matrix<double> invertedSqrtEigenvalues = Matrix<double>.Build.DenseOfMatrix(sqrtEigenvalues);
+                invertedSqrtEigenvalues.SetDiagonal(invertedSqrtEigenvalues.Diagonal().DivideByThis(1.0));
 
-            FillPopulation(eigenvectors, sqrtEigenvalues);
-            SortPopulation();
+                FillPopulation(eigenvectors, sqrtEigenvalues);
+                SortPopulation();
 
-            AdaptMeans();
-            stepSizeParameters.UpdateEvolutionPaths(eigenvectors, invertedSqrtEigenvalues, 
-                                                    adaptationParameters, selectionParameters, 
-                                                    evaluation.iFFE, means, previousMeans);
-            AdaptCovarianceMatrix();
-            stepSizeParameters.AdaptStepSize(adaptationParameters);
+                AdaptMeans();
+                stepSizeParameters.UpdateEvolutionPaths(eigenvectors,
+                    invertedSqrtEigenvalues,
+                    adaptationParameters,
+                    selectionParameters,
+                    evaluation.iFFE,
+                    means,
+                    previousMeans);
+                AdaptCovarianceMatrix();
+                stepSizeParameters.AdaptStepSize(adaptationParameters);
 
-            return CheckNewBest(sampledPopulation[0]);
+                return CheckNewBest(sampledPopulation[0]);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        private void InitMeans()
+        protected void InitMeans()
         {
             means.SetValues(realGenerator.Fill(new List<double>(evaluation.iSize)).ToArray());
+            previousMeans.SetValues(realGenerator.Fill(new List<double>(evaluation.iSize)).ToArray());
         }
 
         private void FillPopulation(Matrix<double> eigenvectors, Matrix<double> sqrtEigenvalues)
@@ -107,13 +118,10 @@ namespace Optimizers
 
         private void SortPopulation()
         {
-            sampledPopulation.Sort((x, y) =>
-                                   {
-                                       return (x.Fitness == y.Fitness) ? 0 : (x.Fitness < y.Fitness) ? 1 : -1;
-                                   });
+            sampledPopulation.Sort((x, y) => { return (x.Fitness == y.Fitness) ? 0 : (x.Fitness < y.Fitness) ? 1 : -1; });
         }
 
-        private void AdaptMeans()
+        protected virtual void AdaptMeans()
         {
             previousMeans.SetSubVector(0, means.Count, means);
 
@@ -144,11 +152,13 @@ namespace Optimizers
                 rankMuUpdateMatrix += selectionParameters.Weights[i] * vy.OuterProduct(vy);
             }
 
-            covarianceMatrix.SetSubMatrix(0, 0, (1.0 - adaptationParameters.C1 - adaptationParameters.CMu) * covarianceMatrix 
-                                                + adaptationParameters.C1 * (stepSizeParameters.PC.OuterProduct(stepSizeParameters.PC) 
-                                                                             + (1 - stepSizeParameters.HSigma) * adaptationParameters.CC 
-                                                                               * (2.0 - adaptationParameters.CC) * covarianceMatrix) 
-                                                + adaptationParameters.CMu * rankMuUpdateMatrix);
+            covarianceMatrix.SetSubMatrix(0,
+                0,
+                (1.0 - adaptationParameters.C1 - adaptationParameters.CMu) * covarianceMatrix
+                + adaptationParameters.C1 * (stepSizeParameters.PC.OuterProduct(stepSizeParameters.PC)
+                                             + (1 - stepSizeParameters.HSigma) * adaptationParameters.CC
+                                                                               * (2.0 - adaptationParameters.CC) * covarianceMatrix)
+                + adaptationParameters.CMu * rankMuUpdateMatrix);
         }
 
         private Matrix<double> SamplingTransform(Matrix<double> eigenvectors, Matrix<double> sqrtEigenvalues)
@@ -156,7 +166,7 @@ namespace Optimizers
             return eigenvectors * sqrtEigenvalues;
         }
 
-        private Vector<double> MultivariateNormalDistributionSample(Matrix<double> samplingTransform)
+        protected virtual Vector<double> MultivariateNormalDistributionSample(Matrix<double> samplingTransform)
         {
             Vector<double> independentN01Sample = Vector<double>.Build.Dense(evaluation.iSize, i => normalRNG.Next());
 

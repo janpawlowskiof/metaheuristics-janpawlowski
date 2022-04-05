@@ -15,7 +15,7 @@ namespace Optimizers
         protected AStopCondition stopCondition;
 
         private long iterationNumber;
-        private DateTime startTime;
+        protected DateTime startTime;
 
         public AOptimizer(IEvaluation<Element> evaluation, AStopCondition stopCondition)
         {

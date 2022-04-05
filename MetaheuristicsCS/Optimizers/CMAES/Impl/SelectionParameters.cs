@@ -3,7 +3,7 @@ using System;
 
 namespace Optimizers.CMAESImpl
 {
-    class SelectionParameters
+    public class SelectionParameters
     {
         public int Lambda { get; }
         public Vector<double> Weights { get; }

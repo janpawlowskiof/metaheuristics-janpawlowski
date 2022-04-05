@@ -2,7 +2,7 @@
 
 namespace Optimizers.CMAESImpl
 {
-    class AdaptationParameters
+    public class AdaptationParameters
     {
         public double CC { get; }
         public double CSigma { get; }

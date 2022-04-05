@@ -3,7 +3,7 @@ using System;
 
 namespace Optimizers.CMAESImpl
 {
-    class StepSizeParameters
+    public class StepSizeParameters
     {
         private readonly double initSigma;
 

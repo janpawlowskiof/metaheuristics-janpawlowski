@@ -6,7 +6,7 @@ using EvaluationsCLI;
 
 namespace Optimizers.CMAESImpl
 {
-    class Individual
+    public class Individual
     {
         private readonly IEvaluation<double> evaluation;
 
