@@ -26,7 +26,7 @@ namespace Optimizers
             double meanFitness = sampledPopulation.Average(x => x.Fitness);
             double fitnessStd = Math.Sqrt(sampledPopulation.Average(x => Math.Pow(x.Fitness - meanFitness, 2))) + 0.001;
 
-            for (int i = 0; i < sampledPopulation.Count; ++i)
+            for (int i = 0; i < selectionParameters.Mu; ++i)
             {
                 double dist2 = 0;
                 for (int j = 0; j < means.Count; j++)

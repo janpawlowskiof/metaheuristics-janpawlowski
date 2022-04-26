@@ -88,25 +88,25 @@ namespace MetaheuristicsCS
             var numRepeats = 10;
 
             {
-                var experiment = new Experiment(problemName, "Random: 0.1", description);
+                var experiment = new Experiment(problemName, "ES: sigma=0.1", description);
                 experiment.RunExperimentNTimes(resultFactory: () => Lab2ES11(evaluationFactory(), sigma:0.1), n: numRepeats);
                 experiments.Add(experiment);
             }
             
             {
-                var experiment = new Experiment(problemName, "Random: 1.0", description);
+                var experiment = new Experiment(problemName, "ES: sigma=1.0", description);
                 experiment.RunExperimentNTimes(resultFactory: () => Lab2ES11(evaluationFactory(), sigma:1.0), n: numRepeats);
                 experiments.Add(experiment);
             }
             
             {
-                var experiment = new Experiment(problemName, "OneFifth: 0.1", description);
+                var experiment = new Experiment(problemName, "OneFifth: sigma=0.1", description);
                 experiment.RunExperimentNTimes(resultFactory: () => Lab2ESOneFifthRule(evaluationFactory(), startSigma: 0.1), numRepeats);
                 experiments.Add(experiment);
             }
             
             {
-                var experiment = new Experiment(problemName, "OneFifth: 1.0", description);
+                var experiment = new Experiment(problemName, "OneFifth: sigma=1.0", description);
                 experiment.RunExperimentNTimes(resultFactory: () => Lab2ESOneFifthRule(evaluationFactory(), startSigma: 1.0), numRepeats);
                 experiments.Add(experiment);
             }
@@ -118,8 +118,8 @@ namespace MetaheuristicsCS
             // }
             
             {
-                var experiment = new Experiment(problemName, "Half Cycle 3 (0.01 - 10)", description);
-                experiment.RunExperimentNTimes(resultFactory: () => Lab2Cycle(evaluationFactory(), MaxIterations * 2 / 3, minSigma: 0.01, maxSigma: 10.0), numRepeats);
+                var experiment = new Experiment(problemName, "1.5 Cycle sigma=(0.001 - 1.0)", description);
+                experiment.RunExperimentNTimes(resultFactory: () => Lab2Cycle(evaluationFactory(), MaxIterations * 2 / 3, minSigma: 0.001, maxSigma: 1.0), numRepeats);
                 experiments.Add(experiment);
             }
             
@@ -130,19 +130,19 @@ namespace MetaheuristicsCS
             // }
 
             {
-                var experiment = new Experiment(problemName, "Half Scaled Cycle 3 (0.001 - 1.0)", description);
-                experiment.RunExperimentNTimes(resultFactory: () => Lab2CycleScaled(evaluationFactory(), MaxIterations * 2 / 3, minSigma: 0.001, maxSigma: 1.0), numRepeats);
+                var experiment = new Experiment(problemName, "1.5 Scaled Cycle sigma=(0.001 - 0.1)", description);
+                experiment.RunExperimentNTimes(resultFactory: () => Lab2CycleScaled(evaluationFactory(), MaxIterations * 2 / 3, minSigma: 0.001, maxSigma: 0.1), numRepeats);
                 experiments.Add(experiment);
             }
 
-            {
-                var experiment = new Experiment(problemName, "Scaled Saw(x1) (10e-5)", description);
-                experiment.RunExperimentNTimes(resultFactory: () => Lab2SawScaled(evaluationFactory(), MaxIterations, minPower:5), numRepeats);
-                experiments.Add(experiment);
-            }
+            // {
+            //     var experiment = new Experiment(problemName, "Scaled ExpSaw(x1) (10e-5)", description);
+            //     experiment.RunExperimentNTimes(resultFactory: () => Lab2SawScaled(evaluationFactory(), MaxIterations, minPower:5), numRepeats);
+            //     experiments.Add(experiment);
+            // }
             
             {
-                var experiment = new Experiment(problemName, "Scaled Saw(x3) (10e-5)", description);
+                var experiment = new Experiment(problemName, "1.5 Scaled ExpCycle (10e-5)", description);
                 experiment.RunExperimentNTimes(resultFactory: () => Lab2SawScaled(evaluationFactory(), MaxIterations / 3, minPower:5), numRepeats);
                 experiments.Add(experiment);
             }

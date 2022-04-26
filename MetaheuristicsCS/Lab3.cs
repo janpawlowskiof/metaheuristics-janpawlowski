@@ -24,7 +24,7 @@ namespace MetaheuristicsCS
 
         private static void RunExperimentsForProblem(Func<IEvaluation<double>> evaluationFactory, string problemName, string description)
         {
-            var numRepeats = 2;
+            var numRepeats = 25;
 
             {
                 var experiment = new Experiment(problemName, "CMAES", description);
@@ -38,11 +38,11 @@ namespace MetaheuristicsCS
                 experiments.Add(experiment);
             }
 
-            {
-                var experiment = new Experiment(problemName, "Jumping R_CMAES 10.0", description);
-                experiment.RunExperimentNTimes(resultFactory: () => Lab3R_JumpingCMAES(evaluationFactory(), 10.0), n: numRepeats);
-                experiments.Add(experiment);
-            }
+            // {
+            //     var experiment = new Experiment(problemName, "Jumping R_CMAES 10.0", description);
+            //     experiment.RunExperimentNTimes(resultFactory: () => Lab3R_JumpingCMAES(evaluationFactory(), 10.0), n: numRepeats);
+            //     experiments.Add(experiment);
+            // }
 
             {
                 var experiment = new Experiment(problemName, "R_CMAES 10.0", description);
@@ -50,17 +50,17 @@ namespace MetaheuristicsCS
                 experiments.Add(experiment);
             }
 
-            // {
-            //     var experiment = new Experiment(problemName, "Jumping CMAES", description);
-            //     experiment.RunExperimentNTimes(resultFactory: () => Lab3JumpingCMAES(evaluationFactory()), n: numRepeats);
-            //     experiments.Add(experiment);
-            // }
-
             {
-                var experiment = new Experiment(problemName, "Very Greedy CMAES", description);
-                experiment.RunExperimentNTimes(resultFactory: () => Lab3VeryGreedyCMAES(evaluationFactory()), n: numRepeats);
+                var experiment = new Experiment(problemName, "Jumping CMAES", description);
+                experiment.RunExperimentNTimes(resultFactory: () => Lab3JumpingCMAES(evaluationFactory()), n: numRepeats);
                 experiments.Add(experiment);
             }
+
+            // {
+            //     var experiment = new Experiment(problemName, "Very Greedy CMAES", description);
+            //     experiment.RunExperimentNTimes(resultFactory: () => Lab3VeryGreedyCMAES(evaluationFactory()), n: numRepeats);
+            //     experiments.Add(experiment);
+            // }
         }
 
         private static OptimizationResult<double> Lab3CMAES(IEvaluation<double> evaluation)
@@ -74,7 +74,7 @@ namespace MetaheuristicsCS
         private static OptimizationResult<double> Lab3RestartingCMAES(IEvaluation<double> evaluation)
         {
             var stopCondition = new IterationsStopCondition(evaluation.dMaxValue, MaxIterations);
-            CMAES cmaes = new RestartingCMAES(evaluation, stopCondition, InitialSigma, numIterationsWithoutImprovementThreshold: 200);
+            CMAES cmaes = new RestartingCMAES(evaluation, stopCondition, InitialSigma, numIterationsWithoutImprovementThreshold: 500);
             cmaes.Run();
             return cmaes.Result;
         }

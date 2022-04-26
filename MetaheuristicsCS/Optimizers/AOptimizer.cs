@@ -14,7 +14,7 @@ namespace Optimizers
         protected IEvaluation<Element> evaluation;
         protected AStopCondition stopCondition;
 
-        private long iterationNumber;
+        protected long iterationNumber;
         protected DateTime startTime;
 
         public AOptimizer(IEvaluation<Element> evaluation, AStopCondition stopCondition)
@@ -56,7 +56,7 @@ namespace Optimizers
         protected abstract void Initialize(DateTime startTime);
         protected abstract bool RunIteration(long itertionNumber, DateTime startTime);
 
-        protected bool CheckNewBest(List<Element> solution, double value, bool onlyImprovements = true)
+        protected virtual bool CheckNewBest(List<Element> solution, double value, bool onlyImprovements = true)
         {
             if (Result == null || value > Result.BestValue || value == Result.BestValue && !onlyImprovements)
             {

@@ -12,8 +12,6 @@ namespace Optimizers
 {
     public class CMAES : AOptimizer<double>
     {
-        private readonly double initSigma;
-
         protected readonly NormalRealRandom normalRNG;
         private readonly RealRandomGenerator realGenerator;
 
@@ -22,7 +20,7 @@ namespace Optimizers
         protected readonly Matrix<double> covarianceMatrix;
 
         private readonly AdaptationParameters adaptationParameters;
-        private readonly SelectionParameters selectionParameters;
+        protected readonly SelectionParameters selectionParameters;
         protected readonly StepSizeParameters stepSizeParameters;
 
         protected readonly List<Individual> sampledPopulation;
@@ -30,8 +28,6 @@ namespace Optimizers
         public CMAES(IEvaluation<double> evaluation, AStopCondition stopCondition, double initSigma, int? seed = null)
             : base(evaluation, stopCondition)
         {
-            this.initSigma = initSigma;
-
             normalRNG = new NormalRealRandom(seed);
             realGenerator = new RealRandomGenerator(evaluation.pcConstraint, seed);
 
@@ -173,7 +169,7 @@ namespace Optimizers
             return means + stepSizeParameters.Sigma * samplingTransform * independentN01Sample;
         }
 
-        private bool CheckNewBest(Individual individual)
+        public bool CheckNewBest(Individual individual)
         {
             return CheckNewBest(individual.Genotype, individual.Fitness);
         }

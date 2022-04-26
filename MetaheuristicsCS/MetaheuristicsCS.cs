@@ -4,9 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Lab1.Run();
+            // Lab1.Run();
             // Lab2.Run();
-            // Lab3.Run();
+            Lab3.Run();
         }
     }
 }

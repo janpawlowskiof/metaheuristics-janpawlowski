@@ -38,9 +38,9 @@ namespace Optimizers
 
             if (numIterationsWithoutImprovement > numIterationsWithoutImprovementThreshold && sampledPopulation.Count > 0)
             {
-                var newMean = sampledPopulation[0].Genotype.ToArray();
-                Initialize(startTime);
-                means.SetValues(newMean);
+                // var newMean = sampledPopulation[0].Genotype.ToArray();
+                // Initialize(startTime);
+                // means.SetValues(newMean);
                 
                 if (improvement)
                     Console.WriteLine("Jumping gave an improvement!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
